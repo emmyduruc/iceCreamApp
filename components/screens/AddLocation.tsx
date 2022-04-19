@@ -24,6 +24,12 @@ export const AddLocation = () => {
 
   const handlePress = () => {
     setIceCreamData([...iceCreamData, iceCream]);
+    navigation.navigate("Hero");
+    setIceCreams({
+      name: "",
+      location: "",
+      flavours: "",
+    });
   };
 
   return (

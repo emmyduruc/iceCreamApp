@@ -2,9 +2,12 @@ import { useNavigation, useRoute } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import styled from "styled-components/native";
 import { RootStackParamList } from "../../App";
+import { v4 as uuid } from "uuid";
+
 import { RouteProp } from "@react-navigation/native";
 
 export const IceCreamDetails = () => {
+  const id: string = uuid();
   const route = useRoute<RouteProp<RootStackParamList, "Details">>();
   const arrowLeft = require("../asset/arrow_left.png");
   const navigation =
@@ -21,7 +24,7 @@ export const IceCreamDetails = () => {
 
       {flavors.split(",") &&
         flavors.split(",").map((flavors: string) => (
-          <ContainerFlavours>
+          <ContainerFlavours key={id}>
             <FlavourDot>{"\u2022"}</FlavourDot>
             <FlavourHeadLine>{flavors}</FlavourHeadLine>
           </ContainerFlavours>
@@ -41,7 +44,6 @@ const ContainerHeadline = styled.Text`
   font-size: 20px;
   text-transform: uppercase;
   font-weight: 900;
-
   padding-top: 20px;
   letter-spacing: 0.5px;
   line-height: 30px;
@@ -52,7 +54,7 @@ const ContainerFlavours = styled.View`
   display: flex;
   justify-content: space-between;
   flex-direction: row;
-  width: 60px;
+  max-width: 70px;
 `;
 
 const FlavourHeadLine = styled.Text`

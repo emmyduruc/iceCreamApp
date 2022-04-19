@@ -24,13 +24,12 @@ export const Hero = () => {
         <Image source={heroImage} />
         <HeroText>Build Up your icecream universe</HeroText>
 
-        {IcreamValues.length !== 0
-          ? IcreamValues.map((icecream) => (
-              <CardContainer key={id}>
-                <Card {...icecream} />
-              </CardContainer>
-            ))
-          : null}
+        {IcreamValues.length !== 0 &&
+          IcreamValues.map((icecream) => (
+            <CardContainer key={id}>
+              <Card {...icecream} />
+            </CardContainer>
+          ))}
 
         <ButtonContainer>
           <Button
