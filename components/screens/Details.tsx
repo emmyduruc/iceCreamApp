@@ -7,7 +7,6 @@ import { v4 as uuid } from "uuid";
 import { RouteProp } from "@react-navigation/native";
 
 export const IceCreamDetails = () => {
-  const id: string = uuid();
   const route = useRoute<RouteProp<RootStackParamList, "Details">>();
   const arrowLeft = require("../asset/arrow_left.png");
   const navigation =
@@ -24,7 +23,7 @@ export const IceCreamDetails = () => {
 
       {flavors.split(",") &&
         flavors.split(",").map((flavors: string) => (
-          <ContainerFlavours key={id}>
+          <ContainerFlavours key={flavors}>
             <FlavourDot>{"\u2022"}</FlavourDot>
             <FlavourHeadLine>{flavors}</FlavourHeadLine>
           </ContainerFlavours>
@@ -44,6 +43,7 @@ const ContainerHeadline = styled.Text`
   font-size: 20px;
   text-transform: uppercase;
   font-weight: 900;
+
   padding-top: 20px;
   letter-spacing: 0.5px;
   line-height: 30px;
@@ -51,16 +51,15 @@ const ContainerHeadline = styled.Text`
 `;
 
 const ContainerFlavours = styled.View`
-  display: flex;
-  justify-content: space-between;
   flex-direction: row;
-  max-width: 70px;
 `;
 
 const FlavourHeadLine = styled.Text`
   font-size: 15px;
   font-weight: 200;
   color: #fff;
+  flex: 1;
+  padding-left: 10px;
   line-height: 20px;
   padding-bottom: 20px;
 `;
