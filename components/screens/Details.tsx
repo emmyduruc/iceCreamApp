@@ -2,16 +2,17 @@ import { useNavigation, useRoute } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import styled from "styled-components/native";
 import { RootStackParamList } from "../../App";
+import { RouteProp } from "@react-navigation/native";
 
 export const IceCreamDetails = () => {
-  const route = useRoute();
+  const route = useRoute<RouteProp<RootStackParamList, "Details">>();
   const arrowLeft = require("../asset/arrow_left.png");
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const { name, location, flavors } = route?.params;
 
   return (
-    <Container>
+    <Container key={name}>
       <IconContainer onPress={() => navigation.navigate("Hero")}>
         <Icon source={arrowLeft} />
       </IconContainer>
@@ -40,7 +41,7 @@ const ContainerHeadline = styled.Text`
   font-size: 20px;
   text-transform: uppercase;
   font-weight: 900;
-  font-family: Barlow;
+
   padding-top: 20px;
   letter-spacing: 0.5px;
   line-height: 30px;
